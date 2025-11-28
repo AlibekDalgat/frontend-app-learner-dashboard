@@ -3,4 +3,14 @@
     overflow: visible;
     min-width: auto;
   }
+
+  .brand-link {
+    --pgn-color-link-brand-base: #15376d;
+    --pgn-color-link-brand-hover: #0f2954;
+    --pgn-color-link-brand-active: #0a1f3f;
+
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+  }
 }

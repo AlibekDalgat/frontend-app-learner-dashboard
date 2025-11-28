@@ -18,6 +18,19 @@
   }
 }
 
+.site-header-desktop .main-nav .nav-link {
+  background: transparent !important;
+  color: var(--pgn-color-neutral-700) !important;
+  border-bottom: 2px solid transparent !important;
+  transition: all 0.2s ease-in-out !important;
+
+  &:hover, &:focus, &.active, .expanded & {
+    background: transparent !important;
+    color: var(--pgn-color-neutral-900) !important;
+    border-bottom-color: #15376d !important;
+  }
+}
+
 .nav-small-menu {
   > * {
     justify-content: flex-start !important;
