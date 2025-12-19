@@ -40,7 +40,7 @@ $input-focus-box-shadow: var(--pgn-elevation-form-input-base); // hack to get up
       box-sizing: content-box;
       position: relative;
       top: 0.1em;
-      height: 1.75rem;
+      height: 2.3rem;
       margin-right: 1rem;
       img {
         display: block;
@@ -64,3 +64,5 @@ $input-focus-box-shadow: var(--pgn-elevation-form-input-base); // hack to get up
     overflow: hidden;
   }
 }
+
+@import "./_home_page";
