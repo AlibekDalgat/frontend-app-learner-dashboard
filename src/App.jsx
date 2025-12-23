@@ -6,7 +6,7 @@ import { logError } from '@edx/frontend-platform/logging';
 import { initializeHotjar } from '@edx/frontend-enterprise-hotjar';
 
 import { ErrorPage, AppContext } from '@edx/frontend-platform/react';
-import { FooterSlot } from '@edx/frontend-component-footer';
+import CustimFooter from 'components/CustomFooter';
 import { Alert } from '@openedx/paragon';
 
 import { RequestKeys } from 'data/constants/requests';
@@ -91,7 +91,7 @@ export const App = () => {
               )}
           </main>
         </AppWrapper>
-        <FooterSlot />
+        <CustimFooter />
       </div>
     </>
   );
