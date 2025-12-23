@@ -40,9 +40,6 @@ export const DashboardLayout = ({ children }) => {
         <Col {...courseListColumnProps} className="course-list-column">
           {children}
         </Col>
-        <Col {...columnConfig.sidebar} className={['sidebar-column', !isCollapsed && 'not-collapsed']}>
-          <WidgetSidebarSlot />
-        </Col>
       </Row>
     </Container>
   );
