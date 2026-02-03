@@ -17,20 +17,28 @@ export const CourseCardActions = ({ cardId }) => {
     hasStarted,
   } = reduxHooks.useCardEnrollmentData(cardId);
   const { isArchived } = reduxHooks.useCardCourseRunData(cardId);
+  const { isCourseCompleted = false } = reduxHooks.useCardCourseRunData(cardId);
 
   return (
     <ActionRow data-test-id="CourseCardActions">
       <CourseCardActionSlot cardId={cardId} />
-      {isEntitlement && (isFulfilled
-        ? <ViewCourseButton cardId={cardId} />
-        : <SelectSessionButton cardId={cardId} />
-      )}
-      {(isArchived && !isEntitlement) && (
-        <ViewCourseButton cardId={cardId} />
-      )}
-      {!(isArchived || isEntitlement) && (hasStarted
-        ? <ResumeButton cardId={cardId} />
-        : <BeginCourseButton cardId={cardId} />
+
+      {isCourseCompleted && <ViewCourseButton cardId={cardId} />}
+
+      {!isCourseCompleted && (
+        <>
+          {isEntitlement && (isFulfilled
+            ? <ViewCourseButton cardId={cardId} />
+            : <SelectSessionButton cardId={cardId} />
+          )}
+          {(isArchived && !isEntitlement) && (
+            <ViewCourseButton cardId={cardId} />
+          )}
+          {!(isArchived || isEntitlement) && (hasStarted
+            ? <ResumeButton cardId={cardId} />
+            : <BeginCourseButton cardId={cardId} />
+          )}
+        </>
       )}
     </ActionRow>
   );
