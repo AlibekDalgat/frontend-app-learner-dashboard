@@ -36,6 +36,11 @@ const messages = defineMessages({
     defaultMessage: 'Account',
     description: 'The text for the user menu Account navigation link.',
   },
+  ratings: {
+    id: 'learnerVariantDashboard.header.ratings',
+    defaultMessage: 'Рейтинги',
+    description: 'Ссылка на страницу рейтингов в основном меню хедера',
+  },
   orderHistory: {
     id: 'learnerVariantDashboard.menu.orderHistory.label',
     defaultMessage: 'Order History',

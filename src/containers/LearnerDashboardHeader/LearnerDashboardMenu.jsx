@@ -31,6 +31,11 @@ const getLearnerHeaderMenu = (
       },
     }]
       : []),
+    {
+      type: 'item',
+      href: `${getConfig().ACCOUNT_PROFILE_URL}/ratings`,
+      content: formatMessage(messages.ratings),
+    },
   ],
   secondaryMenu: [
     ...(getConfig().SUPPORT_URL ? [{
@@ -53,11 +58,6 @@ const getLearnerHeaderMenu = (
           href: `${getConfig().ACCOUNT_SETTINGS_URL}`,
           content: formatMessage(messages.account),
         },
-        ...(getConfig().ORDER_HISTORY_URL ? [{
-          type: 'item',
-          href: getConfig().ORDER_HISTORY_URL,
-          content: formatMessage(messages.orderHistory),
-        }] : []),
       ],
     },
     {
