@@ -36,6 +36,11 @@ const messages = defineMessages({
     defaultMessage: 'Account',
     description: 'The text for the user menu Account navigation link.',
   },
+  rewards: {
+    id: 'learnerVariantDashboard.menu.rewards.label',
+    defaultMessage: 'Мои награды',
+    description: 'Ссылка на награды пользователя в выпадающем меню',
+  },
   ratings: {
     id: 'learnerVariantDashboard.header.ratings',
     defaultMessage: 'Рейтинги',
