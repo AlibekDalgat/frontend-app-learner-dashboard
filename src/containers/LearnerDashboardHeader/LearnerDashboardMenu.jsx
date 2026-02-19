@@ -58,6 +58,11 @@ const getLearnerHeaderMenu = (
           href: `${getConfig().ACCOUNT_SETTINGS_URL}`,
           content: formatMessage(messages.account),
         },
+        {
+          type: 'item',
+          href: `${getConfig().ACCOUNT_PROFILE_URL}/rewards`,
+          content: formatMessage(messages.rewards),
+        },
       ],
     },
     {
