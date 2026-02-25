@@ -66,3 +66,22 @@ $input-focus-box-shadow: var(--pgn-elevation-form-input-base); // hack to get up
 }
 
 @import "./_home_page";
+
+.app-header-fixed {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: white;
+}
+
+.app-footer {
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .app-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 1000;
+  }
+}
