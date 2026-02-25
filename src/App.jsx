@@ -79,7 +79,9 @@ export const App = () => {
       </Helmet>
       <div>
         <AppWrapper>
-          <LearnerDashboardHeader />
+          <div className="app-header-fixed">
+            <LearnerDashboardHeader />
+          </div>
           <main id="main">
             {hasNetworkFailure
               ? (
@@ -91,7 +93,9 @@ export const App = () => {
               )}
           </main>
         </AppWrapper>
-        <CustimFooter />
+        <div className="app-footer">
+          <CustimFooter />
+        </div>
       </div>
     </>
   );
