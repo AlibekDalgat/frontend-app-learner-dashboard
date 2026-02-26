@@ -23,6 +23,7 @@ export const ConfirmEmailBanner = () => {
     closeConfirmModal,
     openConfirmModalButtonClick,
     userConfirmEmailButtonClick,
+    isSending,
   } = useConfirmEmailBannerData();
   const { formatMessage } = useIntl();
 
@@ -38,6 +39,7 @@ export const ConfirmEmailBanner = () => {
               variant="link"
               size="inline"
               onClick={openConfirmModalButtonClick}
+              disabled={isSending}
             >
               {formatMessage(messages.confirmNowButton)}
             </Button>
