@@ -2,8 +2,9 @@ import React from 'react';
 
 import { StrictDict } from 'utils';
 import { apiHooks, reduxHooks } from 'hooks';
-
+import { getConfig } from '@edx/frontend-platform';
 import * as module from './hooks';
+import { post } from 'data/services/lms/utils';
 
 export const state = StrictDict({
   showPageBanner: (val) => React.useState(val), // eslint-disable-line
@@ -19,8 +20,14 @@ export const useConfirmEmailBannerData = () => {
   const openConfirmModal = () => setShowConfirmModal(true);
   const sendConfirmEmail = apiHooks.useSendConfirmEmail();
 
-  const openConfirmModalButtonClick = () => {
-    sendConfirmEmail();
+  const openConfirmModalButtonClick = async () => {
+    const resendUrl = `${getConfig().LMS_BASE_URL}/bulk_email/api/resend-activation-email/`;
+    try {
+      await post(resendUrl, {});
+      console.log('Запрос на повторную отправку письма активации отправлен');
+    } catch (err) {
+      console.error('Ошибка при отправке запроса на повтор активации:', err);
+    }
     openConfirmModal();
     closePageBanner();
   };
