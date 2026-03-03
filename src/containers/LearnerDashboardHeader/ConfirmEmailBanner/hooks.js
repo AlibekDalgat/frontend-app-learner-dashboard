@@ -2,12 +2,14 @@ import React from 'react';
 
 import { StrictDict } from 'utils';
 import { apiHooks, reduxHooks } from 'hooks';
-
+import { getConfig } from '@edx/frontend-platform';
 import * as module from './hooks';
+import { post } from 'data/services/lms/utils';
 
 export const state = StrictDict({
   showPageBanner: (val) => React.useState(val), // eslint-disable-line
   showConfirmModal: (val) => React.useState(val), // eslint-disable-line
+  isSending: (val) => React.useState(val),
 });
 
 export const useConfirmEmailBannerData = () => {
@@ -17,10 +19,21 @@ export const useConfirmEmailBannerData = () => {
   const closePageBanner = () => setShowPageBanner(false);
   const closeConfirmModal = () => setShowConfirmModal(false);
   const openConfirmModal = () => setShowConfirmModal(true);
-  const sendConfirmEmail = apiHooks.useSendConfirmEmail();
+  const [isSending, setIsSending] = module.state.isSending(false);
 
-  const openConfirmModalButtonClick = () => {
-    sendConfirmEmail();
+  const openConfirmModalButtonClick = async () => {
+    if (isSending) return;
+    setIsSending(true);
+
+    const resendUrl = `${getConfig().LMS_BASE_URL}/bulk_email/api/resend-activation-email/`;
+    try {
+      await post(resendUrl, {});
+      console.log('Запрос на повторную отправку письма активации отправлен');
+    } catch (err) {
+      console.error('Ошибка при отправке запроса на повтор активации:', err);
+    } finally {
+      setIsSending(false);
+    }
     openConfirmModal();
     closePageBanner();
   };
@@ -37,6 +50,7 @@ export const useConfirmEmailBannerData = () => {
     closeConfirmModal,
     openConfirmModalButtonClick,
     userConfirmEmailButtonClick,
+    isSending,
   };
 };
 
