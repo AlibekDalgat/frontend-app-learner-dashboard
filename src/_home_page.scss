@@ -1,28 +1,30 @@
 :root {
-  --pgn-color-btn-bg-primary: #2F2F60;
-  --pgn-color-btn-border-primary: #2F2F60;
+  --pgn-color-btn-bg-primary: var(--primary);
+  --pgn-color-btn-border-primary: var(--primary);
   --pgn-color-btn-text-primary: #ffffff;
 
-  --pgn-color-btn-hover-bg-primary: #1F1F40;
-  --pgn-color-btn-hover-border-primary: #1F1F40;
+  --pgn-color-btn-hover-bg-primary: #0F0F20;
+  --pgn-color-btn-hover-border-primary: #0F0F20;
   --pgn-color-btn-hover-text-primary: #ffffff;
 
-  --pgn-color-btn-active-bg-primary: #0F0F20;
-  --pgn-color-btn-active-border-primary: #0F0F20;
+  --pgn-color-btn-active-bg-primary: var(--primary-light);
+  --pgn-color-btn-active-border-primary: var(--primary-light);
   --pgn-color-btn-active-text-primary: #ffffff;
 
   --pgn-color-btn-focus-outline-primary: rgba(47, 47, 96, 0.3);
-  --pgn-color-btn-focus-bg-primary: #2F2F60;
-  --pgn-color-btn-focus-border-primary: #2F2F60;
+  --pgn-color-btn-focus-bg-primary: var(--primary);
+  --pgn-color-btn-focus-border-primary: var(--primary);
   --pgn-color-btn-focus-text-primary: #ffffff;
 
-  --pgn-color-btn-disabled-bg-primary: #EDE8F5;
-  --pgn-color-btn-disabled-border-primary: #EDE8F5;
+  --pgn-color-btn-disabled-bg-primary: var(--primary-light);
+  --pgn-color-btn-disabled-border-primary: var(--primary-light);
   --pgn-color-btn-disabled-text-primary: #6b7280;
+
+  --pgn-color-primary-base: var(--primary);
+  --pgn-other-content-form-control-radio-indicator-icon-checked-base: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%230F0F20'/%3e%3c/svg%3e");
+  --pgn-other-content-form-control-checkbox-indicator-icon-checked-base: url("data:image/svg+xml,<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M21 3H3V21H21V3ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z' fill='%230F0F20'/></svg>");
 }
 
-$primary: #2F2F60;
-$primary-light: #EDE8F5;
 $text-color: #1f2937;
 $text-color-primary: #374151;
 $light-dark: #6b7280;
@@ -363,7 +365,7 @@ footer.tutor-container {
                             width: 20px;
                             border: 1px solid #C4C7CF;
                             &:checked {
-                                border-color: $primary;
+                                border-color: var(--primary);
                             }
                         }
                         input[type=checkbox] {
@@ -403,13 +405,13 @@ footer.tutor-container {
                                 margin: 0 0 8px;
                             }
                             a {
-                                color: $primary;
+                                color: var(--primary);
                                 font-size: 12px;
                                 line-height: 18px;
                                 font-weight: 500;
                                 svg {
                                     width: 18px;
-                                    fill: $primary;
+                                    fill: var(--primary);
                                 }
                             }
                         }
@@ -440,8 +442,8 @@ footer.tutor-container {
         margin: 0 0 27px;
     }
     a.btn-brand {
-        background: $primary;
-        border-color: $primary;
+        background: var(--primary);
+        border-color: var(--primary);
         margin: 0;
         font-size: 14px;
         font-weight: 500;
@@ -459,7 +461,7 @@ footer.tutor-container {
 #course-list-active-filters {
     margin-bottom: 10px;
     .pgn__chip.pgn__chip-light {
-        background: $primary;
+        background: var(--primary);
         * {
             color: white;
             fill: white;

@@ -60,6 +60,7 @@ export const courseCard = StrictDict({
 
       isCourseCompleted: courseRun.isCourseCompleted,
       certificateActive: courseRun.certificateActive,
+      totalRewards: courseRun.totalRewards,
     }),
   ),
   credit: mkCardSelector(

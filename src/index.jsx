@@ -20,6 +20,7 @@ import {
   initialize,
   subscribe,
   mergeConfig,
+  getConfig,
 } from '@edx/frontend-platform';
 
 import { configuration } from './config';
@@ -28,9 +29,32 @@ import messages from './i18n';
 
 import App from './App';
 
+const applyWidgetTheme = () => {
+  const config = getConfig();
+  const root = document.documentElement;
+
+  root.style.setProperty('--primary', '#2F2F60');
+  root.style.setProperty('--primary-light', '#EDE8F5');
+
+  if (!config.WIDGET_MODE) {
+    return;
+  }
+
+
+  root.style.setProperty('--primary', config.WIDGET_BRAND_PRIMARY);
+  root.style.setProperty('--primary-light', config.WIDGET_BRAND_PRIMARY_LIGHT);
+
+  if (config.WIDGET_MODE && config.WIDGET_LOGO_URL) {
+    document.body.setAttribute('data-widget-mode', 'true');
+    document.documentElement.style.setProperty('--widget-logo-url', `url(${config.WIDGET_LOGO_URL})`);
+  } else {
+    document.body.removeAttribute('data-widget-mode');
+  }
+};
+
 subscribe(APP_READY, () => {
   const root = createRoot(document.getElementById('root'));
-
+  applyWidgetTheme();
   root.render(
     <StrictMode>
       <AppProvider store={store}>

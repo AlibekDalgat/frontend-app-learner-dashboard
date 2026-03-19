@@ -16,23 +16,32 @@ export const CourseCardDetails = ({ cardId }) => {
     openSessionModal,
     courseNumber,
     changeOrLeaveSessionMessage,
+    totalRewards,
   } = useCardDetailsData({ cardId });
 
   return (
-    <span className="small" data-testid="CourseCardDetails">
-      {providerName} • {courseNumber}
-      {!(isEntitlement && !isFulfilled) && accessMessage && (
-        ` • ${accessMessage}`
+    <>
+      <span className="small" data-testid="CourseCardDetails">
+        {providerName} • {courseNumber}
+        {!(isEntitlement && !isFulfilled) && accessMessage && (
+          ` • ${accessMessage}`
+        )}
+        {isEntitlement && isFulfilled && canChange ? (
+          <>
+            {' • '}
+            <Button variant="link" size="inline" className="m-0 p-0" onClick={openSessionModal}>
+              {changeOrLeaveSessionMessage}
+            </Button>
+          </>
+        ) : null}
+      </span>
+
+      {totalRewards > 0 && (
+        <h6 style={{ paddingTop: '10px' }}>
+          За прохождение данного курса можно заработать награды: {totalRewards}
+        </h6>
       )}
-      {isEntitlement && isFulfilled && canChange ? (
-        <>
-          {' • '}
-          <Button variant="link" size="inline" className="m-0 p-0" onClick={openSessionModal}>
-            {changeOrLeaveSessionMessage}
-          </Button>
-        </>
-      ) : null}
-    </span>
+    </>
   );
 };
 

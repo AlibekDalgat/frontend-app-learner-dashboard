@@ -27,7 +27,7 @@
   &:hover, &:focus, &.active, .expanded & {
     background: transparent !important;
     color: var(--pgn-color-neutral-900) !important;
-    border-bottom-color: #2F2F60 !important;
+    border-bottom-color: var(--primary) !important;
   }
 }
 
@@ -48,4 +48,32 @@
 .logo {
   // copy from legacy dashboard
   height: 40px;
+}
+
+[data-widget-mode="true"] header .logo,
+[data-widget-mode="true"] .site-header .logo,
+[data-widget-mode="true"] .site-header-mobile .logo {
+  background-image: var(--widget-logo-url, none) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+
+  width: 80px !important;
+  height: 40px !important;
+  min-height: 20px !important;
+
+  position: relative !important;
+  top: 0 !important;
+  margin-right: 1rem !important;
+}
+
+[data-widget-mode="true"] header .logo img,
+[data-widget-mode="true"] .site-header .logo img,
+[data-widget-mode="true"] .site-header-mobile .logo img {
+  display: none !important;
+}
+
+[data-widget-mode="true"] header .logo {
+  display: flex !important;
+  align-items: center !important;
 }
