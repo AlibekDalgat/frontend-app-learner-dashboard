@@ -1,3 +1,35 @@
 a.course-card-title {
   color: var(--pgn-color-black);
 }
+
+.promo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.promo-text {
+  font-weight: 500;
+  color: var(--pgn-color-black);
+}
+
+.promo-icon {
+  height: 1.4rem;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  vertical-align: middle;
+  transition: transform 0.12s ease;
+
+  &:hover {
+    transform: scale(1.08);
+  }
+}
+
+.promo-section.has-link .promo-icon {
+  cursor: pointer;
+}
