@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from '@openedx/paragon';
+import { Button, Hyperlink } from '@openedx/paragon';
 
 import useCardDetailsData from './hooks';
 import './index.scss';
@@ -17,7 +17,10 @@ export const CourseCardDetails = ({ cardId }) => {
     courseNumber,
     changeOrLeaveSessionMessage,
     totalRewards,
+    promotions,
   } = useCardDetailsData({ cardId });
+
+const hasPromotion = promotions && promotions.text;  // или promotions?.text
 
   return (
     <>
@@ -40,6 +43,29 @@ export const CourseCardDetails = ({ cardId }) => {
         <h6 style={{ paddingTop: '10px' }}>
           За прохождение данного курса можно заработать награды: {totalRewards}
         </h6>
+      )}
+
+      {hasPromotion && (
+        <div className={`promo-section ${promotions.link ? 'has-link' : ''}`}>
+          <span className="promo-text">
+            {promotions.text}
+          </span>
+
+          {promotions.logoUrl && (
+            <a
+              href={promotions.link || '#'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="promo-link"
+            >
+              <img
+                src={promotions.logoUrl}
+                alt={promotions.text || 'Акция'}
+                className="promo-icon"
+              />
+            </a>
+          )}
+        </div>
       )}
     </>
   );
