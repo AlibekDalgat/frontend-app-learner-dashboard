@@ -1,0 +1,131 @@
+.ai-assistant-page {
+  .ai-chat-window {
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    background: #fff;
+    height: calc(100vh - 180px);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .ai-chat-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #dee2e6;
+    background: #f8f9fa;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .ai-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .message-bubble {
+    max-width: 82%;
+    padding: 13px 17px;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    word-break: break-word;
+
+    &.user {
+      align-self: flex-end;
+      background: var(--primary, #2F2F60);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+
+    &.assistant {
+      align-self: flex-start;
+      background: #f1f1f1;
+      color: #222;
+      border-bottom-left-radius: 4px;
+    }
+
+    &.greeting {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    &.error {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    &.error-token {
+      background: #fff3cd;
+      color: #856404;
+    }
+  }
+
+  .sources-container {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    font-size: 0.82rem;
+
+    .sources-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #555;
+    }
+
+    ul {
+      padding-left: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .ai-chat-input-area {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid #dee2e6;
+    background: #fff;
+    border-radius: 0 0 12px 12px;
+  }
+}
+
+.ai-chats-list {
+  .chat-card {
+    padding-left: 15px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    .course-title-wrapper {
+      min-width: 0;
+    }
+
+    .course-title {
+      display: block;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      line-height: 1.3;
+    }
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transform: translateY(-1px);
+    }
+
+    &.active {
+      border-color: var(--primary, #2F2F60);
+      background: #f8f9fa;
+    }
+  }
+}

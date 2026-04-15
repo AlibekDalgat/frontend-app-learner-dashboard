@@ -29,6 +29,8 @@ import messages from './i18n';
 
 import App from './App';
 
+import AIAssistantPage from './ai-assistant';
+
 const applyWidgetTheme = () => {
   const config = getConfig();
   const root = document.documentElement;
@@ -60,6 +62,10 @@ subscribe(APP_READY, () => {
       <AppProvider store={store}>
         <Routes>
           <Route path="/" element={<PageWrap><App /></PageWrap>} />
+          <Route
+            path="/ai-assistant"
+            element={<PageWrap><AIAssistantPage /></PageWrap>}
+          />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AppProvider>
