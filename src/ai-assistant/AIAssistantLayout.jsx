@@ -47,16 +47,7 @@ const AIAssistantLayout = () => {
     <div className="ai-assistant-page">
       <Container size="xl" className="py-4">
         <Row>
-          <Col lg={4} xl={3}>
-            <AIChatsList
-              sessions={sessions}
-              activeSessionId={activeSessionId}
-              onDelete={loadSessions}
-              loading={loading}
-            />
-          </Col>
-
-          <Col lg={8} xl={9}>
+          <Col lg={8} xl={9} className="order-1 order-lg-2 mb-4 mb-lg-0">
             {activeSession ? (
               <AIChatWindow
                 session={activeSession}
@@ -67,6 +58,15 @@ const AIAssistantLayout = () => {
                 Загрузка...
               </div>
             )}
+          </Col>
+
+          <Col lg={4} xl={3} className="order-2 order-lg-1">
+            <AIChatsList
+              sessions={sessions}
+              activeSessionId={activeSessionId}
+              onDelete={loadSessions}
+              loading={loading}
+            />
           </Col>
         </Row>
       </Container>
