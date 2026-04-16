@@ -41,6 +41,10 @@ const messages = defineMessages({
     id: 'ai.assistant.error.tokenLimit',
     defaultMessage: 'Вы достигли лимита запросов к ИИ-ассистенту. Задайте вопрос позже.',
   },
+  aiAssistantUnavailableMessage: {
+    id: 'ai.assistant.unavailable.message',
+    defaultMessage: 'ИИ-ассистент в данный момент отключён.',
+  },
 });
 
 export default messages;
