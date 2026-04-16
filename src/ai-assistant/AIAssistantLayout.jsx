@@ -46,8 +46,6 @@ const AIAssistantLayout = () => {
   return (
     <div className="ai-assistant-page">
       <Container size="xl" className="py-4">
-        <h1 className="mb-4">Чаты с ИИ-ассистентом</h1>
-
         <Row>
           <Col lg={4} xl={3}>
             <AIChatsList

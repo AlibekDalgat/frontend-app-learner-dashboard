@@ -32,7 +32,7 @@ const AIChatsList = ({ sessions, activeSessionId, onDelete }) => {
 
   return (
     <div className="ai-chats-list">
-      <h4 className="mb-3">Чаты с ИИ-ассистентом</h4>
+      <h4 className="mb-3">{intl.formatMessage(messages.pageTitle)}</h4>
 
       {globalSession && (
         <Card
