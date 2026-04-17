@@ -13,9 +13,9 @@ const getLearnerHeaderMenu = (
   mainMenu: [
     {
       type: 'item',
-      href: '/',
+      href: `${getConfig().LMS_BASE_URL}/dashboard`,
       content: formatMessage(messages.course),
-      isActive: true,
+      isActive: !window.location.pathname.includes('/ai-assistant'),
     },
     ...(getConfig().ENABLE_PROGRAMS ? [{
       type: 'item',
@@ -31,6 +31,12 @@ const getLearnerHeaderMenu = (
       },
     }]
       : []),
+    ...(getConfig().ENABLE_AI_ASSISTANT_WIDGET ? [{
+      type: 'item',
+      href: `${getConfig().LEARNER_HOME_BASE_URL}ai-assistant`,
+      content: formatMessage(messages.aiAssis),
+      isActive: window.location.pathname.includes('/ai-assistant'),
+    }] : []),
     {
       type: 'item',
       href: `${getConfig().ACCOUNT_PROFILE_URL}/ratings`,

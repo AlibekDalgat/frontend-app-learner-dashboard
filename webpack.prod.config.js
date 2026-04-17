@@ -18,6 +18,10 @@ config.plugins.push(
         from: path.resolve(__dirname, './public/robots.txt'),
         to: path.resolve(__dirname, './dist/robots.txt'),
       },
+      {
+        from: path.resolve(__dirname, './public/pwa'),
+        to: path.resolve(__dirname, './dist/pwa'),
+      },
     ],
   }),
 );
