@@ -49,7 +49,7 @@ const messages = defineMessages({
   aiAssis: {
     id: 'learnerVariantDashboard.header.ai-assistant',
     defaultMessage: 'ИИ-ассистент',
-    description: 'Ссылка на страницу рейтингов в основном меню хедера',
+    description: 'Ссылка на страницу чатов с ИИ-ассистентом',
   },
   orderHistory: {
     id: 'learnerVariantDashboard.menu.orderHistory.label',
