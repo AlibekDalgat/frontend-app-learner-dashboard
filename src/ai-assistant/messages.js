@@ -7,7 +7,7 @@ const messages = defineMessages({
   },
   globalChat: {
     id: 'ai.assistant.global',
-    defaultMessage: 'Глобальный чат',
+    defaultMessage: 'Помощь по порталу',
   },
   courseChats: {
     id: 'ai.assistant.course-chats',
@@ -19,7 +19,7 @@ const messages = defineMessages({
   },
   globalTitle: {
     id: 'ai.assistant.global.title',
-    defaultMessage: 'Глобальный чат с ИИ-ассистентом',
+    defaultMessage: 'Помощь по порталу',
   },
   welcomeGlobal: {
     id: 'ai.assistant.global.welcome',
