@@ -109,7 +109,7 @@ return (
                   <div className="d-flex flex-column gap-2 align-items-end">
                     {session.course_url && (
                       <Hyperlink
-                        destination={session.course_url}
+                        destination={`${session.course_url}${session.course_url.includes('?') ? '&' : '?'}ai_assistant=open`}
                         target="_self"
                         className="p-0"
                         onClick={(e) => e.stopPropagation()}
