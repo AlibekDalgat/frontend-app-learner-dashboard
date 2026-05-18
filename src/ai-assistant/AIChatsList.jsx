@@ -7,7 +7,7 @@ import { deleteSession } from './api';
 import messages from './messages';
 import './AIAssistant.scss';
 
-const AIChatsList = ({ sessions, activeSessionId, onDelete }) => {
+const AIChatsList = ({ sessions, activeSessionId, onDelete, onSelectSession }) => {
   const intl = useIntl();
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
 
@@ -29,24 +29,32 @@ const AIChatsList = ({ sessions, activeSessionId, onDelete }) => {
     }
     setConfirmDeleteId(null);
   };
-
-  return (
+return (
     <div className="ai-chats-list">
       <h4 className="mb-3">{intl.formatMessage(messages.pageTitle)}</h4>
 
       {globalSession && (
         <Card
           className={`chat-card mb-3 ${activeSessionId === globalSession.rag_session_id ? 'active' : ''}`}
+          onClick={() => onSelectSession(globalSession.rag_session_id)} // ДОБАВЛЕНО
+          style={{ cursor: 'pointer' }} // ДОБАВЛЕНО для удобства
         >
           <Card.Body className="d-flex align-items-center py-3">
             <Chat className="text-primary mr-3" style={{ fontSize: '1.7rem' }} />
             <div className="flex-grow-1">
-              <strong>{intl.formatMessage(messages.globalChat)}</strong>
+              <strong style={{ fontSize: '1rem' }}>{intl.formatMessage(messages.globalChat)}</strong>
             </div>
 
             {confirmDeleteId === globalSession.rag_session_id ? (
               <div className="d-flex gap-2">
-                <Button variant="danger" size="sm" onClick={() => confirmDelete(globalSession.rag_session_id)}>
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    confirmDelete(globalSession.rag_session_id);
+                  }}
+                >
                   Удалить
                 </Button>
                 <IconButton
@@ -54,7 +62,10 @@ const AIChatsList = ({ sessions, activeSessionId, onDelete }) => {
                   iconAs={Cancel}
                   size="sm"
                   variant="primary"
-                  onClick={() => setConfirmDeleteId(null)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setConfirmDeleteId(null);
+                  }}
                   style={{ marginLeft: '2px', marginRight: '2px' }}
                 />
               </div>
@@ -75,7 +86,12 @@ const AIChatsList = ({ sessions, activeSessionId, onDelete }) => {
         <>
           <h5 className="small text-muted mb-3 mt-4">{intl.formatMessage(messages.courseChats)}</h5>
           {courseSessions.map(session => (
-            <Card key={session.rag_session_id} className="chat-card mb-3">
+            <Card
+              key={session.rag_session_id}
+              className={`chat-card mb-3 ${activeSessionId === session.rag_session_id ? 'active' : ''}`}
+              onClick={() => onSelectSession(session.rag_session_id)}
+              style={{ cursor: 'pointer' }}
+            >
               <Card.Body className="py-3">
                 <div className="d-flex justify-content-between align-items-start">
                   <div className="flex-grow-1 pe-3 course-title-wrapper">
@@ -93,7 +109,7 @@ const AIChatsList = ({ sessions, activeSessionId, onDelete }) => {
                   <div className="d-flex flex-column gap-2 align-items-end">
                     {session.course_url && (
                       <Hyperlink
-                        destination={session.course_url}
+                        destination={`${session.course_url}${session.course_url.includes('?') ? '&' : '?'}ai_assistant=open`}
                         target="_self"
                         className="p-0"
                         onClick={(e) => e.stopPropagation()}
@@ -109,7 +125,14 @@ const AIChatsList = ({ sessions, activeSessionId, onDelete }) => {
 
                     {confirmDeleteId === session.rag_session_id ? (
                       <div className="d-flex gap-2">
-                        <Button variant="danger" size="sm" onClick={() => confirmDelete(session.rag_session_id)}>
+                        <Button
+                          variant="danger"
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            confirmDelete(session.rag_session_id);
+                          }}
+                        >
                           Удалить
                         </Button>
                         <IconButton
@@ -117,7 +140,10 @@ const AIChatsList = ({ sessions, activeSessionId, onDelete }) => {
                           iconAs={Cancel}
                           size="sm"
                           variant="primary"
-                          onClick={() => setConfirmDeleteId(null)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setConfirmDeleteId(null);
+                          }}
                           style={{ marginLeft: '2px', marginRight: '2px' }}
                         />
                       </div>

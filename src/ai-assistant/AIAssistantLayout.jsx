@@ -27,9 +27,15 @@ const AIAssistantLayout = () => {
       setSessions(updatedSessions);
 
       const globalSession = updatedSessions.find(s => s.context_key === 'global');
-      if (globalSession) {
-        setActiveSessionId(globalSession.rag_session_id);
-      }
+
+      setActiveSessionId(currentId => {
+        const sessionExists = updatedSessions.some(s => s.rag_session_id === currentId);
+        if (currentId && sessionExists) {
+          return currentId;
+        }
+        return globalSession ? globalSession.rag_session_id : null;
+      });
+
     } catch (err) {
       console.error('Failed to load AI sessions', err);
     } finally {
@@ -50,6 +56,7 @@ const AIAssistantLayout = () => {
           <Col lg={8} xl={9} className="order-1 order-lg-2 mb-4 mb-lg-0">
             {activeSession ? (
               <AIChatWindow
+                key={activeSession.rag_session_id}
                 session={activeSession}
                 onSessionUpdated={loadSessions}
               />
@@ -64,6 +71,7 @@ const AIAssistantLayout = () => {
             <AIChatsList
               sessions={sessions}
               activeSessionId={activeSessionId}
+              onSelectSession={setActiveSessionId}
               onDelete={loadSessions}
               loading={loading}
             />
